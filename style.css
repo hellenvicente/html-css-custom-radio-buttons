@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: #00d2ff; /* Fundo vibrante */
+}
+
+.wrapper{
+  display: inline-flex;
+  background: #fff;
+  height: 100px;
+  width: 400px;
+  align-items: center;
+  justify-content: space-evenly;
+  border-radius: 5px;
+  padding: 20px 15px;
+  box-shadow: 5px 5px 30px rgba(0,0,0,0.2);
+}
+
+.wrapper .option{
+  background: #fff;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin: 0 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 0 10px;
+  border: 2px solid lightgrey;
+  transition: all 0.2s ease; /* Transição um pouco mais rápida para o clique */
+}
+
+/* --- ADIÇÃO: Efeito de clique (Active) --- */
+/* Quando o usuário clica e segura, o botão dá uma leve encolhida e muda para um tom cinza claro */
+.wrapper .option:active {
+  transform: scale(0.95);
+  background: #487281;
+}
+
+.wrapper .dot{
+  height: 20px;
+  width: 20px;
+  background: #d9d9d9;
+  border-radius: 50%;
+  position: relative;
+}
+
+.dot::before{
+  content: "";
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 12px;
+  height: 12px;
+  background: #0059b3;
+  border-radius: 50%;
+  opacity: 0;
+  transform: scale(0);
+  transition: all 0.3s ease;
+}
+
+/* Esconde os inputs originais */
+input[type="radio"]{
+  display: none;
+}
+
+/* Estilo quando a opção correspondente está marcada */
+#option-1:checked + .option-1,
+#option-2:checked + .option-2{
+  border-color: #0059b3;
+  background: #0059b3;
+}
+
+/* Garante que mesmo clicando no botão já selecionado, ele mantenha a cor azul */
+#option-1:checked + .option-1:active,
+#option-2:checked + .option-2:active {
+  background: #0059b3;
+}
+
+#option-1:checked + .option-1 .dot,
+#option-2:checked + .option-2 .dot{
+  background: #fff;
+}
+
+#option-1:checked + .option-1 .dot::before,
+#option-2:checked + .option-2 .dot::before{
+  opacity: 1;
+  transform: scale(1);
+}
+
+#option-1:checked + .option-1 span,
+#option-2:checked + .option-2 span{
+  color: #fff;
+}
